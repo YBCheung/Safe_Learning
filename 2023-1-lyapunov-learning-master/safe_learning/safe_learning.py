@@ -82,8 +82,8 @@ def compute_v_dot_distribution(dV, mean, variance):
     var - np.array
         The variance of V_dot at each grid point
     """
-    # V_dot_mean = dV * mu
-    # V_dot_var = sum_i(|dV_i| * var_i)
+    # V_dot_mean = sum_i(dV_i * mu)
+    # V_dot_var = sum_i(dV_i^2 * var_i)
     # Should be dV.T var dV if we considered correlation
     # by considering correlations (predicting the sum term directly).
     return np.sum(dV * mean, axis=1), np.sum(dV**2 * variance, axis=1)
